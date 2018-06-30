@@ -1,5 +1,6 @@
 package cn.jssd.model;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import cn.jssd.factory.DaoFactory;
@@ -8,7 +9,7 @@ public class ReaderInfoTableModel extends AbstractTableModel{
 
 	private String cardId = null;
 	private String loginName = null;
-	private Object[] title = {"loginName", "password", "cardId", "name", "sex", "rederType",
+	private String[] title = {"id","loginName", "password", "cardId", "name", "sex", "rederType",
 								"cardType", "phone", "createTime", "modifyTime"};
 	private Object[][] body = null;
 	
@@ -26,6 +27,9 @@ public class ReaderInfoTableModel extends AbstractTableModel{
 	private void init() {
 		body = DaoFactory.getUserDaoInstence().listToObject(
 					DaoFactory.getUserDaoInstence().queryReaderList(cardId, loginName));
+		if(body.length == 0) {
+			JOptionPane.showMessageDialog(null, "没有查找到", "查询问题", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	
@@ -40,8 +44,32 @@ public class ReaderInfoTableModel extends AbstractTableModel{
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return body.length;
+//		if(body.length == 0) {
+//			return 5;
+//		} else 
+			return body.length;
 	}
+
+//	@Override
+//	public Class<?> getColumnClass(int columnIndex) {
+//		// TODO Auto-generated method stub
+//		return body[0][columnIndex].getClass();
+//	}
+
+
+	@Override
+	public String getColumnName(int column) {
+		// TODO Auto-generated method stub
+		return title[column];
+	}
+
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 	//得到某个单元格的值
 	@Override

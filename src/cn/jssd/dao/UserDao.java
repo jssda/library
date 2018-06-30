@@ -13,10 +13,10 @@ public interface UserDao {
 	public boolean addReader(User u);
 	
 	//修改读者信息
-	public boolean modifyReader(String sql);
+	public boolean modifyReader(User u);
 	
 	//删除读者信息
-	public boolean deletReader(String sql);
+	public boolean deletReader(User u);
 	
 	//查询读者信息
 	public List<User> queryReaderList(String cardId, String loginName);

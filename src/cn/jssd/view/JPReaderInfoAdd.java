@@ -11,9 +11,6 @@ import cn.jssd.bean.User;
 import cn.jssd.factory.DaoFactory;
 import cn.jssd.model.ReaderTypeListModel;
 
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -47,84 +44,51 @@ public class JPReaderInfoAdd extends JPanel {
 		u = new User();
 		
 		setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{139, 315, 75, 147, 133, 123, 99, 49, 0};
-		gridBagLayout.rowHeights = new int[]{39, 189, 18, 103, 99, 120, 74, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(149, 73, 800, 168);
 		lblNewLabel_1.setIcon(new ImageIcon("F:\\eclipse-workspace\\library\\image\\top1.gif"));
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.gridwidth = 8;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 1;
-		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("LoginName");
+		lblNewLabel.setBounds(34, 347, 72, 18);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBackground(UIManager.getColor("CheckBox.focus"));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 3;
-		add(lblNewLabel, gbc_lblNewLabel);
+		add(lblNewLabel);
 		
 		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 3;
-		add(textField, gbc_textField);
+		textField.setBounds(142, 344, 316, 24);
+		add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblName = new JLabel("name");
+		lblName.setBounds(593, 347, 32, 18);
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblName.gridx = 3;
-		gbc_lblName.gridy = 3;
-		add(lblName, gbc_lblName);
+		add(lblName);
 		
 		textField_2 = new JTextField();
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 3;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 4;
-		gbc_textField_2.gridy = 3;
-		add(textField_2, gbc_textField_2);
+		textField_2.setBounds(685, 344, 356, 24);
+		add(textField_2);
 		textField_2.setColumns(10);
 		
 		JLabel lblCardid = new JLabel("cardId");
+		lblCardid.setBounds(44, 434, 48, 18);
 		lblCardid.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblCardid = new GridBagConstraints();
-		gbc_lblCardid.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCardid.gridx = 0;
-		gbc_lblCardid.gridy = 4;
-		add(lblCardid, gbc_lblCardid);
+		add(lblCardid);
 		
 		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 4;
-		add(textField_1, gbc_textField_1);
+		textField_1.setBounds(142, 431, 316, 24);
+		add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblSex = new JLabel("sex");
+		lblSex.setBounds(593, 434, 24, 18);
 		lblSex.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblSex = new GridBagConstraints();
-		gbc_lblSex.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSex.gridx = 3;
-		gbc_lblSex.gridy = 4;
-		add(lblSex, gbc_lblSex);
+		add(lblSex);
 		
 		JRadioButton radioButton = new JRadioButton("男");
+		radioButton.setBounds(706, 430, 43, 27);
 		radioButton.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				if(arg0.getSource() == radioButton) {
@@ -132,13 +96,10 @@ public class JPReaderInfoAdd extends JPanel {
 				}
 			}
 		});
-		GridBagConstraints gbc_radioButton = new GridBagConstraints();
-		gbc_radioButton.insets = new Insets(0, 0, 5, 5);
-		gbc_radioButton.gridx = 4;
-		gbc_radioButton.gridy = 4;
-		add(radioButton, gbc_radioButton);
+		add(radioButton);
 		
 		JRadioButton radioButton_1 = new JRadioButton("女");
+		radioButton_1.setBounds(793, 430, 43, 27);
 		radioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(arg0.getSource() == radioButton_1) {
@@ -146,63 +107,44 @@ public class JPReaderInfoAdd extends JPanel {
 				}
 			}
 		});
-		GridBagConstraints gbc_radioButton_1 = new GridBagConstraints();
-		gbc_radioButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_radioButton_1.gridx = 5;
-		gbc_radioButton_1.gridy = 4;
-		add(radioButton_1, gbc_radioButton_1);
+		add(radioButton_1);
 		ButtonGroup bgpSexType = new ButtonGroup();
 		bgpSexType.add(radioButton);
 		bgpSexType.add(radioButton_1);
 		
 		JLabel lblReaderType = new JLabel("Reader Type");
+		lblReaderType.setBounds(34, 517, 88, 18);
 		lblReaderType.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblReaderType = new GridBagConstraints();
-		gbc_lblReaderType.insets = new Insets(0, 0, 5, 5);
-		gbc_lblReaderType.gridx = 0;
-		gbc_lblReaderType.gridy = 5;
-		add(lblReaderType, gbc_lblReaderType);
+		add(lblReaderType);
 		
 		JComboBox<String> comboBox = new JComboBox<String>(new ReaderTypeListModel());
+		comboBox.setBounds(142, 575, 316, 24);
 		comboBox.setEditable(false);
 		comboBox.setSelectedIndex(0);
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 5;
-		add(comboBox, gbc_comboBox);
+		add(comboBox);
 		
 		JLabel lblPhone = new JLabel("phone");
+		lblPhone.setBounds(585, 517, 40, 18);
 		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblPhone = new GridBagConstraints();
-		gbc_lblPhone.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPhone.gridx = 3;
-		gbc_lblPhone.gridy = 5;
-		add(lblPhone, gbc_lblPhone);
+		add(lblPhone);
 		
 		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.gridwidth = 3;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 4;
-		gbc_textField_3.gridy = 5;
-		add(textField_3, gbc_textField_3);
+		textField_3.setBounds(685, 514, 356, 24);
+		add(textField_3);
 		textField_3.setColumns(10);
 		
 		JButton button = new JButton("添加信息");
+		button.setBounds(685, 637, 198, 43);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				u.setLoginName(textField.getText());
 				u.setCardId(textField_1.getText());
-				u.setReaderType(comboBox.getSelectedIndex() + 1);
 				u.setCardType(comboBox.getSelectedIndex() + 1);
 				u.setCreateTime(new Date());
 				u.setModifyTime(new Date());
 				u.setPhone(textField_3.getText());
 				u.setName(textField_2.getText());
-				if(!DaoFactory.getUserDaoInstence().addReader(u) || u.getSex() == 0) {
+				if(!DaoFactory.getUserDaoInstence().addReader(u) || u.getSex() == 0 || u.getReaderType() == 0) {
 					JOptionPane.showMessageDialog(JPReaderInfoAdd.this, "请检查信息", "添加警告", JOptionPane.WARNING_MESSAGE);
 				} else {
 					System.out.println("添加成功了");
@@ -210,14 +152,37 @@ public class JPReaderInfoAdd extends JPanel {
 			}
 		});
 		button.setFont(new Font("宋体", Font.PLAIN, 30));
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.gridwidth = 2;
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 4;
-		gbc_button.gridy = 6;
-		add(button, gbc_button);
+		add(button);
 		
-
+		JLabel lblCardtype = new JLabel("cardType");
+		lblCardtype.setBounds(34, 578, 72, 18);
+		add(lblCardtype);
+		
+		JRadioButton radioButton2 = new JRadioButton("管理员");
+		radioButton2.setBounds(149, 517, 87, 27);
+		radioButton2.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				if(arg0.getSource() == radioButton2) {
+					u.setReaderType(2);;
+				}
+			}
+		});
+		add(radioButton2);
+		
+		JRadioButton radioButton3 = new JRadioButton("读者");
+		radioButton3.setBounds(242, 517, 117, 27);
+		radioButton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(arg0.getSource() == radioButton3) {
+					u.setReaderType(1);
+				}
+			}
+		});
+		add(radioButton3);
+		ButtonGroup bgpCardType = new ButtonGroup();
+		bgpCardType.add(radioButton2);
+		bgpCardType.add(radioButton3);
+		
 	}
 
 }

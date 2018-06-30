@@ -3,6 +3,7 @@ package cn.jssd.bean;
 import java.util.Date;
 
 public class User {
+	private int id = 0;
 	private String loginName = null;
 	private String password = null;
 	private String cardId = null;
@@ -92,5 +93,13 @@ public class User {
 
 	public void setModifyTime(Date modifyTime) {
 		this.modifyTime = modifyTime;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
