@@ -251,7 +251,7 @@ public class UserImp implements UserDao {
 			}
 		}
 		
-		System.out.println("listsize() = " + list.size());
+//		System.out.println("listsize() = " + list.size());
 		return list;
 	}
 

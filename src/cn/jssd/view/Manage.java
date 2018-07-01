@@ -160,13 +160,16 @@ public class Manage extends JFrame {
 		JPanel panel_2 = new JPReaderInfoQuery();
 		contentPane.add(panel_2, "jp3");
 		
-		JPanel panel_4 = new JPanel();
+		JPanel panel_3 = new JPBookTypeAdd();
+		contentPane.add(panel_3, "jp4");
+		
+		JPanel panel_4 = new JPBookTypeModify();
 		contentPane.add(panel_4, "jp5");
 		
-		JPanel panel_5 = new JPanel();
+		JPanel panel_5 = new JPBookAdd();
 		contentPane.add(panel_5, "jp6");
 		
-		JPanel panel_6 = new JPanel();
+		JPanel panel_6 = new JPBookModify();
 		contentPane.add(panel_6, "jp7");
 		
 		JPanel panel_7 = new JPanel();

@@ -4,15 +4,16 @@ import java.util.Date;
 
 public class Book {
 
-	private String bookId = null;
-	private String bookName = null;
-	private int type = 0;
-	private String author = null;
-	private String publisher = null;
-	private double price = 0f;
-	private int collection = 0;
-	private int bookshelf = 0;
-	private Date createTime = null;
+	private Integer id;
+	private String bookId;
+	private String bookName;
+	private Integer type;
+	private String author;
+	private String publisher;
+	private Double price;
+	private Integer collection;
+	private Integer bookshelf;
+	private Date createTime;
 
 	public String getBookId() {
 		return bookId;
@@ -30,7 +31,7 @@ public class Book {
 		this.bookName = bookName;
 	}
 
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 
@@ -54,7 +55,7 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -62,7 +63,7 @@ public class Book {
 		this.price = price;
 	}
 
-	public int getCollection() {
+	public Integer getCollection() {
 		return collection;
 	}
 
@@ -70,7 +71,7 @@ public class Book {
 		this.collection = collection;
 	}
 
-	public int getBookshelf() {
+	public Integer getBookshelf() {
 		return bookshelf;
 	}
 
@@ -84,6 +85,14 @@ public class Book {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
