@@ -61,8 +61,8 @@ public class JPReaderInfoQuery extends JPanel {
 		JButton btnChaxun = new JButton("≤È—Ø");
 		btnChaxun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String CardId = textField_1.getText();
-				String LoginName = textField.getText();
+				String CardId = textField_1.getText().trim();
+				String LoginName = textField.getText().trim();
 				
 				if("".equals(CardId) && "".equals(LoginName)) {
 					JOptionPane.showMessageDialog(null, "≤È—Ø ß∞‹", "≤È—Ø¥ÌŒÛ", JOptionPane.WARNING_MESSAGE);

@@ -24,4 +24,7 @@ public interface UserDao {
 	//对象数据转化成二维数组数据
 	public Object[][] listToObject(List<User> list);
 	
+	//查看借阅天数是否够
+	public boolean chackMaxBook(User u);
+	
 }

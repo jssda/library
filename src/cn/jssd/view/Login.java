@@ -99,6 +99,8 @@ public class Login extends JFrame {
 					JOptionPane.showMessageDialog(Login.this, "请检查登陆信息", "登陆警告", JOptionPane.WARNING_MESSAGE);
 				} else {
 					System.out.println("登陆成功");
+					Login.this.setVisible(false);
+					new Manage().setVisible(true);
 				}
 			}
 		});

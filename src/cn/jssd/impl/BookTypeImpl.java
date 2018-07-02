@@ -151,7 +151,7 @@ public class BookTypeImpl implements BookTypeDao {
 		
 		try {
 			String sql = null;
-			if(bt.getType() != null && bt.getBorrowingDays() != null) {
+			if(bt.getType() != null && bt.getBorrowingDays() != null && bt.getDescription() != null) {
 				sql = "select * " + 
 						"from b_book_type_tab " + 
 						"where type = " 
@@ -159,18 +159,20 @@ public class BookTypeImpl implements BookTypeDao {
 						+ " and BorrowingDays = "
 						+ bt.getBorrowingDays()
 						+ " and description like '%" + bt.getDescription() + "%';";
-			} else if(bt.getType() != null) {
+			} else if(bt.getType() != null && bt.getDescription() != null) {
 				sql = "select * " + 
 						"from b_book_type_tab " + 
 						"where type = " 
 						+ bt.getType()
 						+ " and description like '%" + bt.getDescription() + "%';";
-			} else if(bt.getBorrowingDays() != null) {
+			} else if(bt.getBorrowingDays() != null && bt.getDescription() != null) {
 				sql = "select * " + 
 						"from b_book_type_tab " + 
 						"where BorrowingDays = "
 						+ bt.getBorrowingDays()
 						+ " and description like '%" + bt.getDescription() + "%';";
+			} else if(bt.getType() != null && bt.getDescription() == null) {
+				sql = "select * from b_book_type_tab where type = " + bt.getType() + ";";
 			} else {
 				sql = "select * " + 
 						"from b_book_type_tab " + 

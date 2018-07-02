@@ -17,4 +17,10 @@ public interface BookDao {
 	
 	//查找图书类别
 	public List<Book> queryBook(Book book);
+	
+	//借阅图书
+	public boolean borrowBook(Book book);
+	
+	//还书
+	public boolean returnBook(Book book);
 }

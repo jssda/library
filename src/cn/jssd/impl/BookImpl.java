@@ -98,46 +98,65 @@ public class BookImpl implements BookDao {
 		// TODO Auto-generated method stub
 		boolean flag = false;
 		
-//		int id = bt.getId();
-//		int type = bt.getType();
-//		int bor = bt.getBorrowingDays();
-//		String discription = bt.getDescription();
-//		
-//		if(bor == 0 || "".equals(discription)) {
-//			flag = false;
-//		} else {
-//			String sql = 	"update b_book_type_tab"
-//							+ " set type = " + type + ","
-//							+ " BorrowingDays = " + bor + ","
-//							+ " description = '" + discription + "'"
-//							+ " where id = " + id + ";";
-//			
-//			Connection conn = DBUtil.getInstence();
-//			Statement ps = null;
-//			int count = 0;
-//			try {
-//				ps = conn.createStatement();
-//				count = ps.executeUpdate(sql);
-//				if(count == 0) {
-//					flag = false;
-//				} else {
-//					flag = true;
-//				}			
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				System.out.println("修改图书类别出错啦");
-//				e.printStackTrace();
-//			} finally {
-//				try {
-//					if(ps != null) {
-//						ps.close();
-//					}
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		}
+		int id = book.getId();
+		String bookId = book.getBookId();
+		String bookName = book.getBookName();
+		Integer type = book.getType();
+		String author = book.getAuthor();
+		String publisher = book.getPublisher();
+		Double price = book.getPrice();
+		Integer collection = book.getCollection();
+		Integer bookshelf = book.getBookshelf();
+		
+		if(bookId == null || "".equals(bookId) || "".equals(bookName) ||
+				collection == null || bookshelf == null) {
+			flag = false;
+		} else {
+			String sql = 	"update b_book_tab"
+							+ " set bookName = '" + bookName + "',"
+							+ " bookId = '" + bookId + "',"
+							+ " type = " + type + ","
+							+ " collection = '" + collection + "',"
+							+ " bookShelf = '" + bookshelf + "'";
+			
+			if(!"".equals(author)) {
+				sql += ", author = '" + author + "'";
+			}
+			if(!"".equals(publisher)) {
+				sql += ", publisher = '" + publisher + "'";
+			}
+			if(price != null) {
+				sql += ", price = '" + price + "'";
+			}
+			sql += " where id = " + id + ";";
+			
+//			System.out.println("sql = " + sql);
+			Connection conn = DBUtil.getInstence();
+			Statement ps = null;
+			int count = 0;
+			try {
+				ps = conn.createStatement();
+				count = ps.executeUpdate(sql);
+				if(count == 0) {
+					flag = false;
+				} else {
+					flag = true;
+				}			
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("修改图书信息出错啦");
+				e.printStackTrace();
+			} finally {
+				try {
+					if(ps != null) {
+						ps.close();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 		
 		return flag;
 	}
@@ -145,7 +164,30 @@ public class BookImpl implements BookDao {
 	@Override
 	public boolean deletBook(Book book) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		String sql = "delete from b_book_tab where id = " + book.getId() + ";";
+		Connection conn = DBUtil.getInstence();
+		Statement ps = null;
+		try {
+			ps = conn.createStatement();
+			ps.execute(sql);
+			flag = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("删除读书信息出错啦");
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return flag;
 	}
 
 	@Override
@@ -162,16 +204,17 @@ public class BookImpl implements BookDao {
 		Integer bookShelf = book.getBookshelf();
 		String author = book.getAuthor();
 		Integer bookType = book.getType();
+		Integer collection = book.getCollection();
 		
 		String sql = "select * from b_book_tab where bookName like '%" + bookName + "%'";
 		
-		if(!"".equals(bookId)) {
+		if(!"".equals(bookId) && bookId != null) {
 			sql = sql + " and bookId = '" + bookId + "'";
 		}
-		if(!"".equals(bookPub)) {
+		if(!"".equals(bookPub) && bookPub != null) {
 			sql = sql + " and publisher = '" + bookPub + "'";
 		}
-		if(!"".equals(author)) {
+		if(!"".equals(author) && author != null) {
 			sql = sql + " and author = '" + author + "'"; 
 		}
 		if(bookShelf != null) {
@@ -180,8 +223,12 @@ public class BookImpl implements BookDao {
 		if(bookType != null) {
 			sql = sql + " and type = " + bookType;
 		}
+		if(collection != null) {
+			sql = sql + " and collection = " + collection;
+		}
 		sql += ";";
 		
+//		System.out.println("sql = " + sql);
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -217,6 +264,89 @@ public class BookImpl implements BookDao {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public boolean borrowBook(Book book) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		String sql = "update b_book_tab set "
+				+ "collection = collection - 1 "
+				+ "where bookId = '" + book.getBookId() + "';";
+		System.out.println("sql = " + sql);
+		Connection conn = DBUtil.getInstence();
+		Statement ps = null;
+		try {
+			ps = conn.createStatement();
+			
+			book.setBookName("");
+			List<Book> list = queryBook(book);
+			int collection = list.get(0).getCollection();
+			if(collection <= 0) {
+				flag = false;
+			} else {
+				ps.execute(sql);
+				flag = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("借阅图书出错啦");
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return flag;
+	}
+
+	@Override
+	public boolean returnBook(Book book) {
+		// TODO Auto-generated method stub
+		
+		boolean flag = false;
+		String sql = "update b_book_tab set "
+				+ "collection = collection + 1 "
+				+ "where bookId = '" + book.getBookId() + "';";
+		System.out.println("sql = " + sql);
+		Connection conn = DBUtil.getInstence();
+		Statement ps = null;
+		try {
+			ps = conn.createStatement();
+			
+			book.setBookName("");
+			List<Book> list = queryBook(book);
+			int collection = list.get(0).getCollection();
+			if(collection <= 0) {
+				flag = false;
+			} else {
+				ps.execute(sql);
+				flag = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("还书出错啦");
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return flag;
 	}
 
 }

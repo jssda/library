@@ -147,7 +147,11 @@ public class JPReaderInfoAdd extends JPanel {
 				if(!DaoFactory.getUserDaoInstence().addReader(u) || u.getSex() == 0 || u.getReaderType() == 0) {
 					JOptionPane.showMessageDialog(JPReaderInfoAdd.this, "请检查信息", "添加警告", JOptionPane.WARNING_MESSAGE);
 				} else {
-					System.out.println("添加成功了");
+					JOptionPane.showMessageDialog(null, "添加成功了", "提示", JOptionPane.INFORMATION_MESSAGE);
+					textField.setText("");
+					textField_1.setText("");
+					textField_2.setText("");
+					textField_3.setText("");
 				}
 			}
 		});

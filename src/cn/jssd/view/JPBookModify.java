@@ -106,7 +106,7 @@ public class JPBookModify extends JPanel {
 		add(comboBox);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(77, 233, 1020, 248);
+		scrollPane.setBounds(65, 233, 1065, 248);
 		add(scrollPane);
 		
 		table = new JTable();
@@ -260,6 +260,18 @@ public class JPBookModify extends JPanel {
 		add(comboBox_1);
 		
 		JButton btnDelet = new JButton("删除");
+		btnDelet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Book book = new Book();
+				book.setId(SelectId);
+				if(DaoFactory.getBookInstence().deletBook(book)) {
+					JOptionPane.showMessageDialog(null, "删除成功", "提示", JOptionPane.INFORMATION_MESSAGE);
+					table.setModel(new BookTableModel(book));
+				} else {
+					JOptionPane.showMessageDialog(null, "删除失败", "错误提示", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnDelet.setBounds(556, 667, 146, 44);
 		add(btnDelet);
 		
@@ -291,7 +303,12 @@ public class JPBookModify extends JPanel {
 				if(selectType != null)
 					book.setType(selectType);
 				
-				DaoFactory.getBookInstence().modifyBook(book);
+				if(DaoFactory.getBookInstence().modifyBook(book)) {
+					JOptionPane.showMessageDialog(null, "修改成功", "提示", JOptionPane.INFORMATION_MESSAGE);
+					table.setModel(new BookTableModel(book));
+				} else {
+					JOptionPane.showMessageDialog(null, "修改失败", "错误", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			
 		});

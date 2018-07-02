@@ -9,15 +9,19 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jssd.bean.Borrow;
+import cn.jssd.bean.ReaderType;
 import cn.jssd.bean.User;
 import cn.jssd.dao.UserDao;
+import cn.jssd.factory.DaoFactory;
 import cn.jssd.util.DBUtil;
 
 public class UserImp implements UserDao {
 
 	public boolean checkLogin(String name, String pass) {
 		
-		String sql = "select * from u_user_tab where loginName = '" + name + "'and password = '" + pass + "';";
+		String sql = "select * from u_user_tab where loginName = '" + name + "' "
+				+ "and password = '" + pass + "';";
 		Connection conn = DBUtil.getInstence();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -218,8 +222,8 @@ public class UserImp implements UserDao {
 		try {
 			String sql = "select * " + 
 					"from u_user_tab " + 
-					"where loginName like '%" + loginName + "%' and cardId like '%" + cardId + "%' "
-					+ "and readerType <> 5;";
+					"where loginName like '%" + loginName + "%' and cardId = '" + cardId + "' "
+					+ ";";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
@@ -251,7 +255,6 @@ public class UserImp implements UserDao {
 			}
 		}
 		
-//		System.out.println("listsize() = " + list.size());
 		return list;
 	}
 
@@ -297,6 +300,32 @@ public class UserImp implements UserDao {
 		}
 		
 		return date;
+	}
+
+	@Override
+	public boolean chackMaxBook(User u) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		
+		Borrow bo = new Borrow();
+		bo.setStatus(1);
+		bo.setCardId(u.getCardId());
+		List<Borrow> list = DaoFactory.getBorrowInstence().BorrowQuery(bo);
+		int borrowBookNumber = list.size();
+		
+		ReaderType rt = new ReaderType();
+
+		List<User> list2 = this.queryReaderList(u.getCardId(), "");
+		rt.setType(list2.get(0).getCardType());
+		
+		int maxBook = DaoFactory.getReaderTypeInstence().queryMaxBook(rt);
+		
+		if(maxBook > borrowBookNumber)
+			flag = true;
+		else
+			flag = false;
+		
+		return flag;
 	}
 
 	
