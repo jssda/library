@@ -68,7 +68,7 @@ public class Login extends JFrame {
 		contentPane.add(label_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("F:\\eclipse-workspace\\library\\image\\top.gif"));
+		lblNewLabel.setIcon(new ImageIcon(".\\image\\top.gif"));
 		lblNewLabel.setBounds(0, 0, 578, 121);
 		contentPane.add(lblNewLabel);
 		
@@ -111,7 +111,8 @@ public class Login extends JFrame {
 		JButton button_1 = new JButton("ÖØÖÃ");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				textField.setText("");
+				passwordField.setText("");
 			}
 		});
 		button_1.setBackground(UIManager.getColor("CheckBox.darkShadow"));

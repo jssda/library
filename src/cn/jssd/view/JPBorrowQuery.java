@@ -88,6 +88,9 @@ public class JPBorrowQuery extends JPanel {
 				bo.setBookId(bookId);
 				bo.setStatus(select);
 				table.setModel(new BorrowTableModel(bo));
+				
+				textbookId.setText("");
+				textcardId.setText("");
 			}
 		});
 		btnNewButton.setBounds(885, 123, 125, 51);

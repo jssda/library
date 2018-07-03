@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
@@ -80,6 +81,7 @@ public class JPBookTypeModify extends JPanel {
 			}
 		));
 		table.setFillsViewportHeight(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
@@ -108,13 +110,17 @@ public class JPBookTypeModify extends JPanel {
 					if(!"".equals(textField_1.getText().trim()))
 						bt.setBorrowingDays(Integer.parseInt(textField_1.getText().trim()));
 					bt.setDescription(textArea.getText());
-					System.out.println("type = " + bt.getType() + "bro" + bt.getBorrowingDays() + "des" + bt.getDescription());
 				} catch (NumberFormatException e) {
-//					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, "请检查输入格式", "输入错误", JOptionPane.ERROR_MESSAGE);
 				}
 				
 				table.setModel(new BookTypeTableModel(bt));
+				textArea.setText("");
+				textArea_1.setText("");
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
 			}
 		});
 		btnNewButton.setBounds(882, 96, 113, 59);

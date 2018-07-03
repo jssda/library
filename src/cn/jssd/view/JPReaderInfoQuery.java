@@ -2,7 +2,6 @@ package cn.jssd.view;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -64,11 +63,10 @@ public class JPReaderInfoQuery extends JPanel {
 				String CardId = textField_1.getText().trim();
 				String LoginName = textField.getText().trim();
 				
-				if("".equals(CardId) && "".equals(LoginName)) {
-					JOptionPane.showMessageDialog(null, "≤È—Ø ß∞‹", "≤È—Ø¥ÌŒÛ", JOptionPane.WARNING_MESSAGE);
-				} else {
-					panel.getTable().setModel(new ReaderInfoTableModel(CardId, LoginName));
-				}
+				panel.getTable().setModel(new ReaderInfoTableModel(CardId, LoginName));
+				panel.getTable().setEnabled(true);
+				textField.setText("");
+				textField_1.setText("");
 			}
 		});
 		btnChaxun.setFont(new Font("ÀŒÃÂ", Font.PLAIN, 24));

@@ -7,8 +7,8 @@ import cn.jssd.factory.DaoFactory;
 
 public class ReaderInfoTableModel extends AbstractTableModel{
 
-	private String cardId = null;
-	private String loginName = null;
+	private String cardId;
+	private String loginName;
 	private String[] title = {"id","loginName", "password", "cardId", "name", "sex", "rederType",
 								"cardType", "phone", "createTime", "modifyTime"};
 	private Object[][] body = null;
@@ -43,19 +43,8 @@ public class ReaderInfoTableModel extends AbstractTableModel{
 	//得到模型的行数
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-//		if(body.length == 0) {
-//			return 5;
-//		} else 
 			return body.length;
 	}
-
-//	@Override
-//	public Class<?> getColumnClass(int columnIndex) {
-//		// TODO Auto-generated method stub
-//		return body[0][columnIndex].getClass();
-//	}
-
 
 	@Override
 	public String getColumnName(int column) {

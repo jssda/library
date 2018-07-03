@@ -111,11 +111,7 @@ public class ReaderInfoTable extends JPanel {
 		lblCardtype.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCardtype.setBounds(53, 431, 101, 18);
 		add(lblCardtype);
-		
-//		textField_6 = new JTextField();
-//		textField_6.setBounds(157, 428, 101, 24);
-//		add(textField_6);
-//		textField_6.setColumns(10);
+
 		
 		JComboBox<String> comboBox = new JComboBox<String>(new ReaderTypeListModel());
 		comboBox.setBounds(157, 428, 101, 24);
@@ -285,5 +281,6 @@ public class ReaderInfoTable extends JPanel {
 				"id", "loginName", "password", "cardId", "name", "sex", "readerType", "cardType", "phone", "creatTime", "modifyTime"
 			}
 		));
+		table.setEnabled(false);
 	}
 }

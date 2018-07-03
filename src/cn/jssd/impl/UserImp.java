@@ -222,8 +222,11 @@ public class UserImp implements UserDao {
 		try {
 			String sql = "select * " + 
 					"from u_user_tab " + 
-					"where loginName like '%" + loginName + "%' and cardId = '" + cardId + "' "
-					+ ";";
+					"where loginName like '%" + loginName + "%'";
+			if(!"".equals(cardId) && cardId != null) {
+				sql += "and cardId = '" + cardId + "' ";
+			}
+			sql += ";";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			

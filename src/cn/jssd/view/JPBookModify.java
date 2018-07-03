@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -147,6 +148,7 @@ public class JPBookModify extends JPanel {
 				"id", "bookId", "bookName", "type", "author", "publisher", "price", "collection", "bookshelf", "createTime"
 			}
 		));
+		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 		
 		JButton btnQuery = new JButton("查询");
@@ -177,6 +179,23 @@ public class JPBookModify extends JPanel {
 						book.setType(selectType);
 					
 					table.setModel(new BookTableModel(book));
+					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					table.setEnabled(true);
+					textAuthor.setText("");
+					textBookId.setText("");
+					textBookName.setText("");
+					textBookshelf.setText("");
+					textPublisher.setText("");
+					comboBox.setSelectedIndex(-1);
+					comboBox.repaint();
+					textAuthor2.setText("");
+					textBookId2.setText("");
+					textBookName2.setText("");
+					textBookShelf2.setText("");
+					textCollection2.setText("");
+					textPublisher2.setText("");
+					comboBox_1.setSelectedIndex(-1);
+					comboBox_1.repaint();
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "请检查输入的数字格式", "错误", JOptionPane.ERROR_MESSAGE);
 				} catch (Exception e1) {
