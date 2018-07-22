@@ -28,6 +28,7 @@ public class DBUtil {
 	
 	//连接数据库
 	private static void connectDB() {
+		//加载驱动
 		try {
 			Class.forName(DBDRIVER);
 			System.out.println("驱动连接成功");

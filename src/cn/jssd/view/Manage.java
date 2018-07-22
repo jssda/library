@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 
 public class Manage extends JFrame {
 
@@ -27,18 +28,18 @@ public class Manage extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Manage frame = new Manage();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Manage frame = new Manage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -180,5 +181,4 @@ public class Manage extends JFrame {
 		JPanel panel_9 = new JPBorrowQuery();
 		contentPane.add(panel_9, "jp10");
 	}
-
 }

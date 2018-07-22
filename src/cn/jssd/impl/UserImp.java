@@ -69,7 +69,7 @@ public class UserImp implements UserDao {
 		if("".equals(LoginName) || "".equals(cardId) || "".equals(name) || "".equals(phone)) {
 			flag = false;
 		} else {
-			String sql = 	"insert u_user_tab(" +
+			String sql = "insert u_user_tab(" +
 					"loginName," + 
 					"  cardId," + 
 					"  name," + 
@@ -250,8 +250,10 @@ public class UserImp implements UserDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
-				ps.close();
+				if(rs != null || ps != null) {
+					rs.close();
+					ps.close();
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

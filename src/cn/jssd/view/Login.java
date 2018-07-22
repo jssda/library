@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import cn.jssd.factory.DaoFactory;
 
@@ -50,15 +49,18 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setResizable(false);
 		setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		setTitle("管理员登陆");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//屏幕置中
 		setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 596) / 2,
 				(Toolkit.getDefaultToolkit().getScreenSize().height - 412) / 2,
 				596 , 412);
+		//定义了一个新的面板
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		//绝对定位
 		contentPane.setLayout(null);
 		
 		JLabel label_1 = new JLabel("用户名");
@@ -81,7 +83,6 @@ public class Login extends JFrame {
 		textField = new JTextField();
 		textField.setBounds(193, 158, 285, 32);
 		contentPane.add(textField);
-		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(191, 211, 285, 32);
@@ -111,8 +112,10 @@ public class Login extends JFrame {
 		JButton button_1 = new JButton("重置");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				textField.setText("");
-				passwordField.setText("");
+				if(arg0.getSource().equals(button_1)) {
+					textField.setText("");
+					passwordField.setText("");
+				}
 			}
 		});
 		button_1.setBackground(UIManager.getColor("CheckBox.darkShadow"));
