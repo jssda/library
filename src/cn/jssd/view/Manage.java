@@ -1,184 +1,173 @@
 package cn.jssd.view;
 
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.UIManager;
-import java.awt.Font;
-import java.awt.CardLayout;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.Rectangle;
-import java.awt.Dimension;
-import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 
 public class Manage extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Manage frame = new Manage();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    /**
+     * Create the frame.
+     */
+    public Manage() {
+        setBackground(UIManager.getColor("Button.disabledForeground"));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1200) / 2,
+                (Toolkit.getDefaultToolkit().getScreenSize().height - 800) / 2, 1200, 800);
+        this.setResizable(false);
 
-	/**
-	 * Create the frame.
-	 */
-	public Manage() {
-		setBackground(UIManager.getColor("Button.disabledForeground"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1200) / 2,
-				(Toolkit.getDefaultToolkit().getScreenSize().height - 800) / 2, 1200, 800);
-		this.setResizable(false);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        CardLayout layout = new CardLayout(0, 0);
+        contentPane.setLayout(layout);
 
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		CardLayout layout = new CardLayout(0, 0);
-		contentPane.setLayout(layout);
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setRequestFocusEnabled(false);
+        menuBar.setSize(new Dimension(0, 80));
+        menuBar.setBounds(new Rectangle(0, 0, 0, 80));
+        setJMenuBar(menuBar);
 
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setRequestFocusEnabled(false);
-		menuBar.setSize(new Dimension(0, 80));
-		menuBar.setBounds(new Rectangle(0, 0, 0, 80));
-		setJMenuBar(menuBar);
+        JMenu menu = new JMenu("å›¾ä¹¦ç®¡ç†ä¿¡æ¯");
+        menuBar.add(menu);
 
-		JMenu menu = new JMenu("Í¼Êé¹ÜÀíĞÅÏ¢");
-		menuBar.add(menu);
+        JMenuItem mntmNewMenuItem = new JMenuItem("è¯»è€…ä¿¡æ¯æ·»åŠ ");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp1");
+            }
+        });
+        mntmNewMenuItem.setFont(new Font("Serif", mntmNewMenuItem.getFont().getStyle(), 15));
+        menu.add(mntmNewMenuItem);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("¶ÁÕßĞÅÏ¢Ìí¼Ó");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp1");
-			}
-		});
-		mntmNewMenuItem.setFont(new Font("Serif", mntmNewMenuItem.getFont().getStyle(), 15));
-		menu.add(mntmNewMenuItem);
+        JMenuItem menuItem = new JMenuItem("è¯»è€…ä¿¡æ¯æŸ¥è¯¢ä¿®æ”¹ä¸åˆ é™¤");
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp3");
+            }
+        });
+        menuItem.setFont(UIManager.getFont("Button.font"));
+        menu.add(menuItem);
 
-		JMenuItem menuItem = new JMenuItem("¶ÁÕßĞÅÏ¢²éÑ¯ĞŞ¸ÄÓëÉ¾³ı");
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp3");
-			}
-		});
-		menuItem.setFont(UIManager.getFont("Button.font"));
-		menu.add(menuItem);
+        JMenu mnNewMenu = new JMenu("å›¾ä¹¦ä¿¡æ¯ç®¡ç†");
+        menuBar.add(mnNewMenu);
 
-		JMenu mnNewMenu = new JMenu("Í¼ÊéĞÅÏ¢¹ÜÀí");
-		menuBar.add(mnNewMenu);
+        JMenu menu_1 = new JMenu("å›¾ä¹¦ç±»åˆ«ç®¡ç†");
+        mnNewMenu.add(menu_1);
 
-		JMenu menu_1 = new JMenu("Í¼ÊéÀà±ğ¹ÜÀí");
-		mnNewMenu.add(menu_1);
+        JMenuItem menuItem_2 = new JMenuItem("å›¾ä¹¦ç±»åˆ«æ·»åŠ ");
+        menuItem_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp4");
+            }
+        });
+        menu_1.add(menuItem_2);
 
-		JMenuItem menuItem_2 = new JMenuItem("Í¼ÊéÀà±ğÌí¼Ó");
-		menuItem_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp4");
-			}
-		});
-		menu_1.add(menuItem_2);
+        JMenuItem menuItem_3 = new JMenuItem("å›¾ä¹¦ç±»åˆ«ä¿®æ”¹");
+        menuItem_3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp5");
+            }
+        });
+        menuItem_3.setFont(UIManager.getFont("Button.font"));
+        menu_1.add(menuItem_3);
 
-		JMenuItem menuItem_3 = new JMenuItem("Í¼ÊéÀà±ğĞŞ¸Ä");
-		menuItem_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp5");
-			}
-		});
-		menuItem_3.setFont(UIManager.getFont("Button.font"));
-		menu_1.add(menuItem_3);
+        JMenu mnNewMenu_1 = new JMenu("å›¾ä¹¦ä¿¡æ¯ç®¡ç†");
+        mnNewMenu.add(mnNewMenu_1);
 
-		JMenu mnNewMenu_1 = new JMenu("Í¼ÊéĞÅÏ¢¹ÜÀí");
-		mnNewMenu.add(mnNewMenu_1);
+        JMenuItem mntmNewMenuItem_1 = new JMenuItem("å›¾ä¹¦ä¿¡æ¯æ·»åŠ ");
+        mntmNewMenuItem_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp6");
+            }
+        });
+        mnNewMenu_1.add(mntmNewMenuItem_1);
 
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Í¼ÊéĞÅÏ¢Ìí¼Ó");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp6");
-			}
-		});
-		mnNewMenu_1.add(mntmNewMenuItem_1);
+        JMenuItem mntmNewMenuItem_2 = new JMenuItem("å›¾ä¹¦ä¿¡æ¯ç®¡ç†");
+        mntmNewMenuItem_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp7");
+            }
+        });
+        mnNewMenu_1.add(mntmNewMenuItem_2);
 
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Í¼ÊéĞÅÏ¢¹ÜÀí");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp7");
-			}
-		});
-		mnNewMenu_1.add(mntmNewMenuItem_2);
+        JMenu mnNewMenu_2 = new JMenu("å€Ÿé˜…ç®¡ç†");
+        mnNewMenu_2.setBounds(new Rectangle(0, 0, 0, 80));
+        menuBar.add(mnNewMenu_2);
 
-		JMenu mnNewMenu_2 = new JMenu("½èÔÄ¹ÜÀí");
-		mnNewMenu_2.setBounds(new Rectangle(0, 0, 0, 80));
-		menuBar.add(mnNewMenu_2);
+        JMenuItem mntmNewMenuItem_3 = new JMenuItem("å›¾ä¹¦å€Ÿé˜…");
+        mntmNewMenuItem_3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp8");
+            }
+        });
+        mnNewMenu_2.add(mntmNewMenuItem_3);
 
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Í¼Êé½èÔÄ");
-		mntmNewMenuItem_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp8");
-			}
-		});
-		mnNewMenu_2.add(mntmNewMenuItem_3);
+        JMenuItem mntmNewMenuItem_4 = new JMenuItem("å›¾ä¹¦å½’è¿˜");
+        mntmNewMenuItem_4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp9");
+            }
+        });
+        mnNewMenu_2.add(mntmNewMenuItem_4);
 
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Í¼Êé¹é»¹");
-		mntmNewMenuItem_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp9");
-			}
-		});
-		mnNewMenu_2.add(mntmNewMenuItem_4);
+        JMenuItem mntmborrowInfoQuery = new JMenuItem("å€Ÿé˜…ä¿¡æ¯æœç´¢");
+        mntmborrowInfoQuery.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                layout.show(contentPane, "jp10");
+            }
+        });
+        mnNewMenu_2.add(mntmborrowInfoQuery);
 
-		JMenuItem mntmborrowInfoQuery = new JMenuItem("½èÔÄĞÅÏ¢ËÑË÷");
-		mntmborrowInfoQuery.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				layout.show(contentPane, "jp10");
-			}
-		});
-		mnNewMenu_2.add(mntmborrowInfoQuery);
+        JPanel panel = new JPReaderInfoAdd();
+        contentPane.add(panel, "jp1");
 
-		JPanel panel = new JPReaderInfoAdd();
-		contentPane.add(panel, "jp1");
+        JPanel panel_2 = new JPReaderInfoQuery();
+        contentPane.add(panel_2, "jp3");
 
-		JPanel panel_2 = new JPReaderInfoQuery();
-		contentPane.add(panel_2, "jp3");
+        JPanel panel_3 = new JPBookTypeAdd();
+        contentPane.add(panel_3, "jp4");
 
-		JPanel panel_3 = new JPBookTypeAdd();
-		contentPane.add(panel_3, "jp4");
+        JPanel panel_4 = new JPBookTypeModify();
+        contentPane.add(panel_4, "jp5");
 
-		JPanel panel_4 = new JPBookTypeModify();
-		contentPane.add(panel_4, "jp5");
+        JPanel panel_5 = new JPBookAdd();
+        contentPane.add(panel_5, "jp6");
 
-		JPanel panel_5 = new JPBookAdd();
-		contentPane.add(panel_5, "jp6");
+        JPanel panel_6 = new JPBookModify();
+        contentPane.add(panel_6, "jp7");
 
-		JPanel panel_6 = new JPBookModify();
-		contentPane.add(panel_6, "jp7");
+        JPanel panel_7 = new JPBorrow();
+        contentPane.add(panel_7, "jp8");
 
-		JPanel panel_7 = new JPBorrow();
-		contentPane.add(panel_7, "jp8");
+        JPanel panel_8 = new JPReturn();
+        contentPane.add(panel_8, "jp9");
 
-		JPanel panel_8 = new JPReturn();
-		contentPane.add(panel_8, "jp9");
+        JPanel panel_9 = new JPBorrowQuery();
+        contentPane.add(panel_9, "jp10");
+    }
 
-		JPanel panel_9 = new JPBorrowQuery();
-		contentPane.add(panel_9, "jp10");
-	}
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Manage frame = new Manage();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }
